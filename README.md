@@ -3,7 +3,7 @@ Webview-GUI
 
 Webview GUI allows you to easily create a GUI for your Golang project using HTML and Javascript. The resulting GUI will work on Linux (WebKitGTK+2) or Windows (Edge). Functions you register in your Go code will be available to use in JavaScript.
 
-Webview Gui is based on the C/C++ files from [Boscop/web-view](https://github.com/Boscop/web-view/) a fork of [zserge/webview(]https://github.com/zserge/webview). These projects use the MIT License. The code can be found in the webview-sys directory.
+Webview Gui is based on the C/C++ files from [Boscop/web-view](https://github.com/Boscop/web-view/) a fork of [zserge/webview](https://github.com/zserge/webview). These projects use the MIT License. The code can be found in the webview-sys directory.
 
 Download Prebuilt Example
 -------------------------

@@ -2,7 +2,7 @@ package gui
 
 /*
 #cgo linux pkg-config: webkit2gtk-4.0
-#cgo windows LDFLAGS: -L. -W1,-rpath\$ORIGIN -l webview_edge
+#cgo windows LDFLAGS: -L. -W1,-rpath=\$ORIGIN -l webview_edge
 #cgo CFLAGS: -w
 #include "webview-sys/webview.h"
 
