@@ -8,8 +8,8 @@ Webview Gui is based on the C/C++ files from [Boscop/web-view](https://github.co
 Download Prebuilt Example
 -------------------------
 
-Linux (requires libwebkit2gtk-4.0)
-Windows
+[Linux](https://github.com/quarton/webview-gui/releases/download/0.1.0/ubuntu_64_examples.tar.xz) (requires libwebkit2gtk-4.0, built on Ubuntu)
+[Windows](https://github.com/quarton/webview-gui/releases/download/0.1.0/windows10_64bit_examples.zip) (Built on Windows 10 64bit)
 
 Example Code
 -------
