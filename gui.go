@@ -2,7 +2,7 @@ package gui
 
 /*
 #cgo linux pkg-config: webkit2gtk-4.0
-#cgo windows LDFLAGS: -L. -W1,-rpath=\$ORIGIN -l webview_edge
+#cgo windows LDFLAGS: -L. -Wl,-rpath=\$ORIGIN -l webview_edge
 #cgo CFLAGS: -w
 #include "webview-sys/webview.h"
 
@@ -18,7 +18,6 @@ import (
 	"bufio"
 	"fmt"
 	"net"
-	"net/url"
 	"runtime"
 	"unsafe"
 
@@ -47,7 +46,7 @@ func NewGui(title string, html string, width, height int, resizeable bool, debug
 	titlePtr := C.CString(title)
 	defer C.free(unsafe.Pointer(titlePtr))
 
-	htmlPtr := C.CString("data:text/html," + url.PathEscape(html))
+	htmlPtr := C.CString(encode(html))
 	defer C.free(unsafe.Pointer(htmlPtr))
 
 	g.webview = C.webview_new(
@@ -90,7 +89,7 @@ func (g *Gui) Run() {
 	go func(w *Gui) {
 		scanner := bufio.NewScanner(g.cli)
 		for scanner.Scan() {
-			g.Eval(fmt.Sprintf("_rpc.recieve('%s')", scanner.Bytes()))
+			g.Eval(fmt.Sprintf("_rpc.recieve(String.raw`%s`)", scanner.Bytes()))
 		}
 	}(g)
 

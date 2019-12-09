@@ -15,7 +15,9 @@ func main() {
 	w.Run()
 }
 
-//---------------------------------------------------------
+//
+// Exported function
+//
 
 type Args struct {
 	A, B int
@@ -35,7 +37,9 @@ func (t *Arith) Div(args *Args, reply *Reply) error {
 	return nil
 }
 
-//-----------------------
+//
+// HTML string
+//
 
 func html() string {
 
@@ -47,19 +51,27 @@ div{margin:15px;}
 div div{margin:0px;}
 </style>
 
-<div>
-	<input type="text" id="title" value="Example"><input type="submit" value="Change Title" onClick="Gui.SetTitle(document.getElementById('title').value)">
-</div>
+<script>
+
+function divide () {
+
+	var a = parseInt(document.getElementById("a").value);
+	var b = parseInt(document.getElementById("b").value);
+
+	Arith.Div(a, b).then((result) => {
+	    console.log("result" + result.C)
+	    document.getElementById("demo").innerHTML = result.C;
+	}).catch((error) => {
+		document.getElementById("demo").innerHTML = error;
+	    console.log("error" + error)
+	})
+
+}
+
+</script>
 
 <div>
-<input type="number" id="rgb_r" min="0" max="255" step="5" value="255">
-<input type="number" id="rgb_g" min="0" max="255" step="5" value="255">
-<input type="number" id="rgb_b" min="0" max="255" step="5" value="255">
-<input type="submit" value="Change Color" onClick="
-	Gui.SetColorRGB(
-		parseInt(document.getElementById('rgb_r').value),
-		parseInt(document.getElementById('rgb_g').value),
-		parseInt(document.getElementById('rgb_b').value))">
+	<input type="text" id="title" value="Example"><input type="submit" value="Change Title" onClick="Gui.SetTitle(document.getElementById('title').value)">
 </div>
 
 <div>
@@ -104,26 +116,6 @@ div div{margin:0px;}
 	<input type="submit" value="Divide" onClick="divide();">
 	<p id='demo'></p>
 </div>
-
-
-<script>
-
-function divide () {
-
-	var a = parseInt(document.getElementById("a").value);
-	var b = parseInt(document.getElementById("b").value);
-
-	Arith.Div(a, b).then((result) => {
-	    console.log("result" + result.C)
-	    document.getElementById("demo").innerHTML = result.C;
-	}).catch((error) => {
-		document.getElementById("demo").innerHTML = error;
-	    console.log("error" + error)
-	})
-
-}
-
-</script>
 
 </html>`
 }
