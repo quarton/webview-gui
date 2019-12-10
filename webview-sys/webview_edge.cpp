@@ -282,7 +282,7 @@ public:
         m_webview.NavigationStarting([=](auto const& sender, auto const& args) {
             m_webview.AddInitializeScript(winrt::to_hstring(init_js));
         });
-        init("window.external.invoke = s => window.external.notify(s)");
+        init("window.external.invoke = s => window.external.notify(s); window.external.invoke('init');");
         resize();
     }
 

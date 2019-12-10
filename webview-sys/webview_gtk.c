@@ -156,7 +156,8 @@ int webview_init(struct gtk_webview *w) {
   webkit_web_view_run_javascript(
       WEBKIT_WEB_VIEW(w->priv.webview),
       "window.external={invoke:function(x){"
-      "window.webkit.messageHandlers.external.postMessage(x);}}",
+      "window.webkit.messageHandlers.external.postMessage(x);}};"
+      "window.external.invoke('init');",
       NULL, NULL, NULL);
 
   g_signal_connect(G_OBJECT(w->priv.window), "destroy",

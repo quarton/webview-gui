@@ -1,6 +1,6 @@
 package gui
 
-// webview-gui control methods avaible to Javascript
+// webview-gui control methods available to Javascript
 
 type GuiExport struct {
 	gui *Gui

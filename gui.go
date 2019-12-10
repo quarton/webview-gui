@@ -82,7 +82,11 @@ func (g *Gui) Run() {
 
 	// write request from javascript to rpc connection
 	g.callback = func(data string) {
-		g.cli.Write([]byte(data))
+		if data == "init" {
+			g.Eval(g.rpc.JsClient())
+		} else {
+			g.cli.Write([]byte(data))
+		}
 	}
 
 	// write responses from the rpc connection to javascript
@@ -92,9 +96,6 @@ func (g *Gui) Run() {
 			g.Eval(fmt.Sprintf("_rpc.recieve(String.raw`%s`)", scanner.Bytes()))
 		}
 	}(g)
-
-	// add code for the JS RPC client
-	go g.Eval(g.rpc.JsClient())
 
 	// loop until quit
 	for C.webview_loop(g.webview, 1) == 0 {
