@@ -65,4 +65,4 @@ Windows requires the `webview_edge.dll` to be in the same directory as the execu
 
 If you wish to build the Windows DDL it requires that Visual Studio is installed on your system with the MSVC component selected. Run the following command in the 'webview-sys' directory using 'x64 Native Tools Command Prompt for VS 2019'.
 
-`cl /LD /std:c++17 -DUNICODE -D_UNICODE webview_edge.cpp`
+`cl /LD /EHsc /DLL /std:c++17 -DUNICODE -D_UNICODE webview_edge.cpp`
