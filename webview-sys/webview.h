@@ -5,7 +5,9 @@
 extern "C" {
 #endif
 
+#if !defined(WEBVIEW_API)
 #define WEBVIEW_API extern __declspec(dllexport)
+#endif
 
 #include <stdint.h>
 #include <string.h>
