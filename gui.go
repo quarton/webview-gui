@@ -3,11 +3,14 @@ package gui
 /*
 #cgo linux pkg-config: webkit2gtk-4.0
 #cgo windows LDFLAGS: -L. -Wl,-rpath=\$ORIGIN -l webview_edge
+#cgo darwin LDFLAGS: -framework WebKit
 #cgo CFLAGS: -w
 #include "webview-sys/webview.h"
 
 #ifdef __linux__
 	#include "webview-sys/webview_gtk.c"
+#elseif __APPLE__
+	#include "webview-sys/webview_cocca.c"
 #endif
 
 extern void callback(void *, void *);

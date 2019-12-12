@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	g := gui.NewGui("Calculator", string(asset), 440, 460, false, false)
+	g := gui.NewGui("Calculator", string(asset), 440, 460, true, false)
 
 	g.Register(new(Calculator))
 	g.SetColorRGB(49, 59, 72)

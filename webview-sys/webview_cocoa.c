@@ -282,7 +282,8 @@ WEBVIEW_API int webview_init(webview_t w) {
       windowExternalOverrideScript,
       sel_registerName("initWithSource:injectionTime:forMainFrameOnly:"),
       get_nsstring("window.external = this; invoke = function(arg){ "
-                   "webkit.messageHandlers.invoke.postMessage(arg); };"),
+                   "webkit.messageHandlers.invoke.postMessage(arg); };"
+                   "window.external.invoke('init');"),
       WKUserScriptInjectionTimeAtDocumentStart, 0);
 
   objc_msgSend(userController, sel_registerName("addUserScript:"),
