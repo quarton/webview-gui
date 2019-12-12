@@ -6,7 +6,7 @@ package gui
 #cgo darwin LDFLAGS: -framework WebKit
 #cgo CFLAGS: -w
 
-#ifdef __linux__ || __APPLE__
+#if defined(__linux__) || defined(__APPLE__)
 	#define WEBVIEW_API
 #endif
 
